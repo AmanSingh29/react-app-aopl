@@ -17,22 +17,14 @@ const HomeScreen = () => {
       accessor: "phone",
     },
     {
-      header: "Email",
-      accessor: "email",
+      header: "Status",
+      accessor: "status",
     },
   ];
 
   return (
     <div className="p-3 p-md-4 p-lg-5">
-      <div className="container-fluid">
-        <h1
-          className="mb-4 fw-bold"
-          style={{ fontSize: "28px", color: "#1a202c" }}
-        >
-          Welcome!
-        </h1>
-        <Table data={dummyUsers} columns={tableColumns} title="Users List" />
-      </div>
+      <Table data={dummyUsers} columns={tableColumns} title="Data List" />
     </div>
   );
 };
