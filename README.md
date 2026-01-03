@@ -1,16 +1,93 @@
-# React + Vite
+# React App AOPL
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the **frontend client** for the react application, built using **React (Vite)** and **Bootstrap**.
 
-Currently, two official plugins are available:
+The frontend is deployed on **Vercel**:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Production URL:**  
+https://react-app-aopl.vercel.app/
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Local Setup Instructions
 
-## Expanding the ESLint configuration
+Follow the steps below to run the frontend locally.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 1️⃣ Clone the Repository
+
+```bash
+https://github.com/AmanSingh29/react-app-aopl
+```
+
+---
+
+## 2️⃣ Open Project in VS Code
+
+```bash
+cd react-app-aopl
+code .
+```
+
+---
+
+## 3️⃣ Install Dependencies
+
+Open the VS Code integrated terminal and run:
+
+```bash
+npm install
+```
+
+---
+
+## 4️⃣ Configure Environment Variables
+
+At the **root of the project**, create a file named `.env`.
+
+Add the following:
+
+```env
+VITE_API_BASE_URL="your server api url"
+```
+
+> ⚠️ Make sure to add the backend server api url here.
+
+---
+
+## 5️⃣ Build the Project
+
+After saving the `.env` file, run:
+
+```bash
+npm run build
+```
+
+This will create a production-ready build.
+
+---
+
+## 6️⃣ Preview the Build Locally
+
+Run the following command:
+
+```bash
+npm run start
+```
+
+The terminal will show a local preview URL.  
+Open that URL in **Google Chrome** (or any browser) to run the project.
+
+---
+
+## 🧩 Tech Stack
+
+- React (Vite)
+- Bootstrap
+- Axios
+- React Router
+- Context API
+- React Toastify
+
+---
