@@ -16,7 +16,7 @@ const initialFormData = {
 
 const AuthScreen = () => {
   const [formData, setFormData] = useState(initialFormData);
-  const [formMode, setFormMode] = useState("signup");
+  const [formMode, setFormMode] = useState("login");
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const { login, isAuthenticated } = useAuth();
@@ -29,20 +29,54 @@ const AuthScreen = () => {
   }, [isAuthenticated, navigate]);
 
   const validateForm = () => {
+    const newErrors = {};
+
     if (formMode === "login") {
-      if (!formData.UserName || !formData.Password) {
-        showError("Username and Password are required");
-        return false;
+      if (!formData.UserName.trim()) {
+        newErrors.UserName = "Username is required";
+      }
+
+      if (!formData.Password) {
+        newErrors.Password = "Password is required";
       }
     }
 
     if (formMode === "signup") {
-      for (const [key, value] of Object.entries(formData)) {
-        if (!value) {
-          showError(`${key} is required`);
-          return false;
-        }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const mobileRegex = /^[6-9]\d{9}$/;
+
+      if (!formData.UserName.trim()) {
+        newErrors.UserName = "Username is required";
       }
+
+      if (!formData.Email.trim()) {
+        newErrors.Email = "Email is required";
+      } else if (!emailRegex.test(formData.Email)) {
+        newErrors.Email = "Enter a valid email address";
+      }
+
+      if (!formData.Password) {
+        newErrors.Password = "Password is required";
+      } else if (formData.Password.length < 6) {
+        newErrors.Password = "Password must be at least 6 characters";
+      }
+
+      if (!formData.MobileNo.trim()) {
+        newErrors.MobileNo = "Mobile number is required";
+      } else if (!mobileRegex.test(formData.MobileNo)) {
+        newErrors.MobileNo = "Enter a valid mobile number";
+      }
+
+      if (!formData.Address.trim()) {
+        newErrors.Address = "Address is required";
+      }
+    }
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length > 0) {
+      showError("Please fix the highlighted errors");
+      return false;
     }
 
     return true;
@@ -51,6 +85,7 @@ const AuthScreen = () => {
   const handleInputChange = useCallback((e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
   }, []);
 
   const handleSubmit = useCallback(
@@ -139,7 +174,7 @@ const AuthScreen = () => {
       formMode={formMode}
       changeFormMode={changeFormMode}
       loading={loading}
-      error={errors}
+      errors={errors}
     />
   );
 };

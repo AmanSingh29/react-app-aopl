@@ -8,7 +8,7 @@ const AuthForm = ({
   formMode,
   changeFormMode,
   loading = false,
-  error = "",
+  errors = {},
 }) => {
   const isSignup = formMode === "signup";
 
@@ -39,6 +39,7 @@ const AuthForm = ({
       name: "MobileNo",
       placeholder: "Mobile Number",
       show: isSignup,
+      type: "number",
     },
     {
       name: "Address",
@@ -70,15 +71,9 @@ const AuthForm = ({
                   placeholder={placeholder}
                   value={formData[name]}
                   onChange={handleInputChange}
+                  error={errors?.[name] || ""}
                 />
               ))}
-
-            {error && (
-              <div className="alert alert-danger mt-3 small" role="alert">
-                {error}
-              </div>
-            )}
-
             <button
               type="submit"
               className="btn btn-primary w-100 mt-3 fw-semibold py-2"
