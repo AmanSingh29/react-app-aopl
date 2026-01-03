@@ -37,6 +37,7 @@ const Table = ({ data, columns, title, className = "" }) => {
         className="table-scroll-wrapper"
         style={{
           overflowX: "auto",
+          maxWidth: "90vw",
         }}
       >
         <table
