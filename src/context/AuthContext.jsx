@@ -29,14 +29,6 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("user", JSON.stringify(userData));
   };
 
-  const signup = (userData) => {
-    const tokenToStore = HARDCODED_TOKEN;
-    setToken(tokenToStore);
-    setUser(userData);
-    localStorage.setItem("token", tokenToStore);
-    localStorage.setItem("user", JSON.stringify(userData));
-  };
-
   const logout = () => {
     setToken(null);
     setUser(null);
@@ -48,7 +40,6 @@ export const AuthProvider = ({ children }) => {
     user,
     token,
     login,
-    signup,
     logout,
     isAuthenticated: !!token && !!user,
     loading,
